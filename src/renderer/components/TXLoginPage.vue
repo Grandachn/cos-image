@@ -1,6 +1,6 @@
 <template>
   <div id='wrapper'>
-    <h1>腾讯云对象存储</h1>
+    <h1>腾讯云对象存储cos</h1>
     <el-input v-model="secretId" placeholder="请输入腾讯云SecretId" clearable></el-input>
     <el-input v-model="secretKey" placeholder="请输入腾讯云SecretKey" clearable></el-input>
     <el-input v-model="bucket" placeholder="请输入腾讯云Bucket" clearable></el-input>

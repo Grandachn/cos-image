@@ -23,11 +23,11 @@
     <el-button type="success" @click="changeConfig">修改配置</el-button>
     <el-switch
       v-model="isCache"
-      active-text="开启本地缓存"
-      inactive-text="关闭本地缓存"
+      active-text="本地保留图片"
+      inactive-text="删除本地图片"
     />
     <br><br>
-    上传的url：
+    url：
     <el-button type="primary" @click="copy" size="mini" round >复制</el-button>
     自动复制：
     <el-switch
@@ -41,7 +41,7 @@
       v-model="url">
     </el-input>
     <br><br><br>
-    markdowm格式化url：
+    markdown：
     <el-button type="primary" @click="copymd" size="mini" round >复制</el-button>
     自动复制：
     <el-switch
@@ -112,10 +112,10 @@
         const isLt8M = file.size / 1024 / 1024 < 8
 
         if (!(isJPEG || isJPG || isPNG)) {
-          this.$message.error('上传头像图片只能是 JPG或者PNG 格式!')
+          this.$message.error('上传图片只能是 JPG或者PNG 格式!')
         }
         if (!isLt8M) {
-          this.$message.error('上传头像图片大小不能超过 8MB!')
+          this.$message.error('上传图片大小不能超过 8MB!')
         }
         return (isJPG || isPNG || isJPEG) && isLt8M
       },
@@ -207,7 +207,7 @@
             var imageSrc = 'https://' + tengxunCos.Bucket + '.cos.' + tengxunCos.Region + '.myqcloud.com/' + data.Key
 
             that.url = imageSrc // res.end(JSON.stringify({status:'100',msg:'上传成功',imageUrl:imageSrc}));
-            that.mdurl = '![在这里插入图片描述](' + that.url + ')'
+            that.mdurl = '![text](' + that.url + ')'
             let resultNotication
             if (that.autoCopyUrl) {
               clipboard.writeText(that.url)
